@@ -27,6 +27,7 @@ npm run dev
 npm run build
 ```
 
+Good and useful contributes are appreciated btw
 ### Lint with [ESLint](https://eslint.org/)
 
 ```sh
