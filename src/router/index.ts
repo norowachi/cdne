@@ -1,4 +1,4 @@
-// main.ts
+// index.ts
 
 import { createRouter, createWebHistory } from 'vue-router'
 import FileSearch from '@/components/FileSearch.vue'

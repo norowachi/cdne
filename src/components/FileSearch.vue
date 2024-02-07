@@ -5,7 +5,7 @@
     <input v-model="userInput" @input="searchFiles" placeholder="Type your query" />
     <div v-if="closestMatch">
       <p>Closest match found: {{ closestMatch }}</p>
-      <img :src="getImageUrl(closestMatch)" alt="Closest Match" @click="updateOpenGraphMetadata" />
+      <img :src="getImageUrl(closestMatch)" alt="Closest Match" />
     </div>
     <div v-else>
       <p>No match found.</p>
@@ -22,7 +22,13 @@
 
 <script lang="ts">
 import Fuse from 'fuse.js'
+import { onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useSeoMeta } from '@unhead/vue'
+
+onMounted(() => {
+  console.log('FileSearch component mounted')
+})
 
 export default {
   data() {
@@ -71,6 +77,9 @@ export default {
           this.closestMatch = null
         }
       }
+
+      console.log('Closest match:', this.closestMatch)
+      this.updateOpenGraphMetadata()
     },
     findClosestMatch(query: string): string | null {
       const matches = this.availableImages.filter((image) =>
@@ -109,24 +118,13 @@ export default {
       }
     },
     updateOpenGraphMetadata() {
-      // Update OpenGraph metadata based on the selected image
-      const closestMatch = this.closestMatch
-      if (closestMatch) {
-        const imageUrl = this.getImageUrl(closestMatch)
-
-        // Dynamically update OpenGraph metadata
-        document.querySelector('meta[property="og:title"]')?.setAttribute('content', closestMatch)
-        document
-          .querySelector('meta[property="og:description"]')
-          ?.setAttribute('content', 'Check out this image!')
-        document.querySelector('meta[property="og:image"]')?.setAttribute('content', imageUrl)
-        document.querySelector('meta[property="og:type"]')?.setAttribute('content', 'website')
-      }
+      console.log('Updating Open Graph metadata:', this.closestMatch)
+      useSeoMeta({
+        title: this.closestMatch,
+        ogTitle: this.closestMatch,
+        ogImage: `https://cdne.pages.dev${this.getImageUrl(this.closestMatch!)}`
+      })
     }
   }
 }
 </script>
-
-<style scoped>
-/* Add any styling for your FileSearch component */
-</style>
