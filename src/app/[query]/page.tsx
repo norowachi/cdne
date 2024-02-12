@@ -12,8 +12,10 @@ export async function generateMetadata(
 
 	const fileList = await getFiles();
 	const file = searchFiles(fileList, query);
+
 	return {
 		title: file,
+		description: null,
 		openGraph: {
 			images: `/assets/${file}`,
 		},
@@ -42,6 +44,8 @@ export default async function FileSearch({
 }
 
 async function getFiles() {
+	"use server";
+
 	const context = await glob("./././public/assets/*.{png,jpg,jpeg,gif,svg}");
 	const fileList = context.map((key) =>
 		key.replace(/public\/assets\/|public\\assets\\/, "")
