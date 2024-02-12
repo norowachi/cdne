@@ -35,24 +35,23 @@ export default async function FileSearch({
 }: {
 	params: { query: string };
 }) {
+	const dirs = readdirSync(path.join(getConfig().serverRuntimeConfig.root));
 	return (
-		<Image
-			alt="image"
-			src={"/assets/" + searchFiles(await getFiles(), params.query)}
-			width="0"
-			height="0"
-			style={{ width: "auto", height: "auto" }}
-		></Image>
+		<>
+			<Image
+				alt="image"
+				src={"/assets/" + searchFiles(await getFiles(), params.query)}
+				width="0"
+				height="0"
+				style={{ width: "auto", height: "auto" }}
+			></Image>
+			{dirs.join(", ")}
+		</>
 	);
 }
 
 async function getFiles() {
 	"use server";
-
-	console.log("hello?")
-	readdir(path.join(getConfig().serverRuntimeConfig.root), (err, files) => {
-		console.log(files);
-	});
 
 	const context = await glob(
 		path.join(getConfig().serverRuntimeConfig.root, "public/assets") +
