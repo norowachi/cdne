@@ -38,13 +38,13 @@ export default async function FileSearch({
 	const dirs = readdirSync(path.join(getConfig().serverRuntimeConfig.root));
 	return (
 		<>
-			<Image
+			{/* <Image
 				alt="image"
 				src={"/assets/" + searchFiles(await getFiles(), params.query)}
 				width="0"
 				height="0"
 				style={{ width: "auto", height: "auto" }}
-			></Image>
+			></Image> */}
 			{dirs.join(", ")}
 		</>
 	);
