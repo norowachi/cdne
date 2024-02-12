@@ -1,7 +1,9 @@
 import Fuse from "fuse.js";
 import Image from "next/image";
+import getConfig from "next/config";
 import type { Metadata, ResolvingMetadata } from "next";
 import { glob } from "glob";
+import path from "path";
 
 export async function generateMetadata(
 	{ params }: { params: { query: string } },
@@ -46,7 +48,10 @@ export default async function FileSearch({
 async function getFiles() {
 	"use server";
 
-	const context = await glob("./././public/assets/*.{png,jpg,jpeg,gif,svg}");
+	const context = await glob(
+		path.join(getConfig().serverRuntimeConfig.root, "public/assets") +
+			"/*.{png,jpg,jpeg,gif,svg}"
+	);
 	const fileList = context.map((key) =>
 		key.replace(/public\/assets\/|public\\assets\\/, "")
 	);
