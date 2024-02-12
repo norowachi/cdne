@@ -49,6 +49,7 @@ export default async function FileSearch({
 async function getFiles() {
 	"use server";
 
+	console.log("hello?")
 	readdir(path.join(getConfig().serverRuntimeConfig.root), (err, files) => {
 		console.log(files);
 	});
