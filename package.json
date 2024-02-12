@@ -6,10 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "pages:preview": "npm run pages:build && wrangler pages dev .vercel/output/static --compatibility-date=2024-02-08 --compatibility-flag=nodejs_compat",
-    "pages:deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
+    "lint": "next lint"
   },
   "dependencies": {
     "fuse.js": "^7.0.0",
