@@ -60,18 +60,15 @@ export default async function FileSearch({
 			{getConfig().serverRuntimeConfig.root}
 			<br />
 			{process.platform}
+			<br />
+			{path.join(process.cwd(), "public", "assets")}
 		</p>
 	);
 }
 
 async function getFiles() {
-	"use server";
-
 	// const context =
-	return await glob(
-			path.join(process.cwd(), "public") +
-			"/*"
-	);
+	return await glob(path.join(process.cwd(), "public") + "/*");
 	// const fileList = context.map((key) =>
 	// 	// process.platform === "win32" ? key.split("\\").pop() :
 	// 	key.split("/").pop()
