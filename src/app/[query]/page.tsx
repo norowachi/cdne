@@ -19,12 +19,12 @@ export async function generateMetadata(
 		title: file,
 		description: null,
 		openGraph: {
-			images: `${window.origin}/assets/${file}`,
+			images: `https://cdne.norowa.dev/assets/${file}`,
 		},
 		twitter: {
 			title: file!,
 			card: "summary_large_image",
-			images: `${window.origin}/assets/${file}`,
+			images: `https://cdne.norowa.dev/assets/${file}`,
 		},
 	};
 }
