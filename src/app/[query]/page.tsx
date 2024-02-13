@@ -62,7 +62,8 @@ async function getFiles() {
 		path.join(process.cwd(), "public", "assets") + "/*.{png,jpg,jpeg,gif,svg}"
 	);
 	const fileList = context.map((key) =>
-		process.platform === "win32" ? key.split("\\").pop() : key.split("/").pop()
+		// process.platform === "win32" ? key.split("\\").pop() :
+		key.split("/").pop()
 	);
 
 	return fileList;
