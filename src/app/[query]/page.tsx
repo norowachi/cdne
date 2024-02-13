@@ -14,7 +14,7 @@ export async function generateMetadata(
 	const file = searchFiles(await getFiles(), query);
 
 	return {
-		title: file,
+		title: null,
 		description: null,
 		openGraph: {
 			images: `https://cdne.norowa.dev/assets/${file}`,
@@ -34,7 +34,7 @@ export default async function FileSearch({
 	// somehow it needs this specified to work
 	path.join(process.cwd(), "public", "assets");
 	return (
-		<p>
+		<>
 			<Image
 				alt="image"
 				src={"/assets/" + searchFiles(await getFiles(), params.query)}
@@ -42,7 +42,7 @@ export default async function FileSearch({
 				height="0"
 				style={{ width: "auto", height: "auto" }}
 			></Image>
-		</p>
+		</>
 	);
 }
 
