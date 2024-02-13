@@ -12,8 +12,10 @@ export async function generateMetadata(
 	// read route params
 	const query = params.query;
 
-	const fileList = await getFiles();
-	const file = searchFiles(fileList, query);
+	const file = searchFiles(
+		(await getFiles()).map((file) => file!),
+		query
+	);
 
 	return {
 		title: file,
@@ -34,12 +36,17 @@ export default async function FileSearch({
 }: {
 	params: { query: string };
 }) {
-	const files = await getFiles();
 	return (
 		<p>
 			<Image
 				alt="image"
-				src={"/assets/" + searchFiles(await getFiles(), params.query)}
+				src={
+					"/assets/" +
+					searchFiles(
+						(await getFiles()).map((file) => file!),
+						params.query
+					)
+				}
 				width="0"
 				height="0"
 				style={{ width: "auto", height: "auto" }}
