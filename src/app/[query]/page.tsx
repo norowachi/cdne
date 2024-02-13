@@ -49,6 +49,8 @@ export default async function FileSearch({
 			{getConfig().serverRuntimeConfig.root}
 			<br />
 			{process.cwd()}
+			<br />
+			{path.join(process.cwd(), "public", "assets")}
 		</p>
 	);
 }
