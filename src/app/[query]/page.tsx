@@ -54,6 +54,10 @@ export default async function FileSearch({
 				style={{ width: "auto", height: "auto" }}
 			></Image> */}
 			{files.length > 0 ? files.join(", ") : "No files found"}
+			<br />
+			{process.cwd()}
+			<br />
+			{getConfig().serverRuntimeConfig.root}
 		</p>
 	);
 }
@@ -63,7 +67,7 @@ async function getFiles() {
 
 	// const context =
 	return await glob(
-		path.join(process.cwd(), "assets") + "/*.{png,jpg,jpeg,gif,svg}"
+		path.join(process.cwd(), "public", "assets") + "/*.{png,jpg,jpeg,gif,svg}"
 	);
 	// const fileList = context.map((key) =>
 	// 	// process.platform === "win32" ? key.split("\\").pop() :
