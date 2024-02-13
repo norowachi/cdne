@@ -38,6 +38,7 @@ export default async function FileSearch({
 	params: { query: string };
 }) {
 	const files = await getFiles();
+	path.join(process.cwd(), "public", "assets");
 	return (
 		<p>
 			{/* <Image
@@ -61,7 +62,6 @@ export default async function FileSearch({
 			<br />
 			{process.platform}
 			<br />
-			{/* {path.join(process.cwd(), "public", "assets")} */}
 		</p>
 	);
 }
