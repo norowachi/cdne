@@ -57,6 +57,8 @@ export default async function FileSearch({
 			<br />
 			{process.cwd()}
 			<br />
+			{getConfig().serverRuntimeConfig.root}
+			<br />
 			{process.platform}
 		</p>
 	);
