@@ -49,7 +49,7 @@ export default async function FileSearch({
 			<br />
 			{getConfig().serverRuntimeConfig.root}
 			<br />
-			{readdirSync(getConfig().serverRuntimeConfig.root + "/assets")}
+			{readdirSync(getConfig().serverRuntimeConfig.root + "/assets").join(", ")}
 		</p>
 	);
 }
