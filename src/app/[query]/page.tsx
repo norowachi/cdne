@@ -67,14 +67,14 @@ export default async function FileSearch({
 }
 
 async function getFiles() {
-	// const context =
-	return await glob(path.join(process.cwd(), "public") + "/*");
-	// const fileList = context.map((key) =>
-	// 	// process.platform === "win32" ? key.split("\\").pop() :
-	// 	key.split("/").pop()
-	// );
+	const context = await glob(
+		path.join(process.cwd(), "public", "assets") + "/*.{png,jpg,jpeg,gif,svg}"
+	);
+	const fileList = context.map((key) =>
+		process.platform === "win32" ? key.split("\\").pop() : key.split("/").pop()
+	);
 
-	// return fileList;
+	return fileList;
 }
 
 function searchFiles(images: string[], userInput: string) {
