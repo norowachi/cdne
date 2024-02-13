@@ -36,6 +36,9 @@ export default async function FileSearch({
 	params: { query: string };
 }) {
 	const files = await getFiles();
+	const dirs = readdirSync(getConfig().serverRuntimeConfig.root + "/assets")
+		.map((c) => c.split(".")[0])
+		.join(", ");
 	return (
 		<p>
 			{/* <Image
@@ -49,7 +52,7 @@ export default async function FileSearch({
 			<br />
 			{getConfig().serverRuntimeConfig.root}
 			<br />
-			{readdirSync(getConfig().serverRuntimeConfig.root + "/assets").join(", ")}
+			{dirs}
 		</p>
 	);
 }
