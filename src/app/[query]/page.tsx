@@ -19,12 +19,12 @@ export async function generateMetadata(
 		title: file,
 		description: null,
 		openGraph: {
-			images: `/assets/${file}`,
+			images: `${window.origin}/assets/${file}`,
 		},
 		twitter: {
 			title: file!,
 			card: "summary_large_image",
-			images: `/assets/${file}`,
+			images: `${window.origin}/assets/${file}`,
 		},
 	};
 }
