@@ -46,6 +46,8 @@ export default async function FileSearch({
 				style={{ width: "auto", height: "auto" }}
 			></Image> */}
 			{files.length > 0 ? files.join(", ") : "No files found"}
+			<br />
+			{getConfig().serverRuntimeConfig.root}
 		</p>
 	);
 }
