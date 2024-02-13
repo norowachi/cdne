@@ -35,6 +35,7 @@ export default async function FileSearch({
 }: {
 	params: { query: string };
 }) {
+	const files = await getFiles();
 	return (
 		<p>
 			{/* <Image
@@ -44,7 +45,7 @@ export default async function FileSearch({
 				height="0"
 				style={{ width: "auto", height: "auto" }}
 			></Image> */}
-			{await getFiles() || "nothin"}
+			{files.length > 0 ? files.join(", ") : "No files found"}
 		</p>
 	);
 }
