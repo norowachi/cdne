@@ -4,7 +4,6 @@ import getConfig from "next/config";
 import type { Metadata, ResolvingMetadata } from "next";
 import { glob } from "glob";
 import path from "path";
-import { readdir, readdirSync } from "fs";
 
 export async function generateMetadata(
 	{ params }: { params: { query: string } },
@@ -36,10 +35,6 @@ export default async function FileSearch({
 	params: { query: string };
 }) {
 	const files = await getFiles();
-	const dirs = readdirSync(getConfig().serverRuntimeConfig.root + "/assets")
-		.map((c) => c.split(".")[0])
-		.join(", ");
-
 	return (
 		<p>
 			{/* <Image
@@ -53,7 +48,6 @@ export default async function FileSearch({
 			<br />
 			{getConfig().serverRuntimeConfig.root}
 			<br />
-			{/* {!!dirs} */}
 		</p>
 	);
 }
