@@ -69,8 +69,7 @@ async function getFiles() {
 
 	// const context =
 	return await glob(
-		getConfig().serverRuntimeConfig.root +
-			//path.join(process.cwd())
+			path.join(process.cwd(), "public") +
 			"/*"
 	);
 	// const fileList = context.map((key) =>
