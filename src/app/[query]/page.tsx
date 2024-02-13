@@ -66,9 +66,7 @@ async function getFiles() {
 	"use server";
 
 	// const context =
-	return await glob(
-		path.join(process.cwd()) + "/*"
-	);
+	return await glob(path.join(getConfig().serverRuntimeConfig.root) + "/*");
 	// const fileList = context.map((key) =>
 	// 	// process.platform === "win32" ? key.split("\\").pop() :
 	// 	key.split("/").pop()
