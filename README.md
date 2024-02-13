@@ -6,7 +6,6 @@ This is a little project I made for images linear/fuzzy search, this branch is m
 
 1. Add UI search in main page
 2. Way to manage and upload assets
-3. Support for Image Embeds in applications like Discord, Slack, Telegram, ect..
 
 
 now i'll leave you with the default readme;
