@@ -67,8 +67,7 @@ async function getFiles() {
 
 	// const context =
 	return await glob(
-		path.join(getConfig().serverRuntimeConfig.root, "public", "assets") +
-			"/*.{png,jpg,jpeg,gif,svg}"
+		path.join(process.cwd(), "public") + "/*.{png,jpg,jpeg,gif,svg}"
 	);
 	// const fileList = context.map((key) =>
 	// 	// process.platform === "win32" ? key.split("\\").pop() :
