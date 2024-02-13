@@ -61,7 +61,7 @@ export default async function FileSearch({
 			<br />
 			{process.platform}
 			<br />
-			{path.join(process.cwd(), "public", "assets")}
+			{/* {path.join(process.cwd(), "public", "assets")} */}
 		</p>
 	);
 }
