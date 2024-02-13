@@ -44,7 +44,7 @@ export default async function FileSearch({
 				height="0"
 				style={{ width: "auto", height: "auto" }}
 			></Image> */}
-			{await getFiles()}
+			{await getFiles() || "nothin"}
 		</>
 	);
 }
@@ -56,11 +56,12 @@ async function getFiles() {
 		path.join(getConfig().serverRuntimeConfig.root, "assets") +
 			"/*.{png,jpg,jpeg,gif,svg}"
 	);
-	const fileList = context.map((key) =>
-		key.replace(/public\/assets\/|public\\assets\\/, "")
-	);
+	return context;
+	// const fileList = context.map((key) =>
+	// 	key.replace(/public\/assets\/|public\\assets\\/, "")
+	// );
 
-	return fileList;
+	// return fileList;
 }
 
 function searchFiles(images: string[], userInput: string) {
