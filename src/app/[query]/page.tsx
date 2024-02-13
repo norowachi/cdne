@@ -13,10 +13,7 @@ export async function generateMetadata(
 	// read route params
 	const query = params.query;
 
-	const file = searchFiles(
-		(await getFiles()).map((file) => file!),
-		query
-	);
+	const file = searchFiles(await getFiles(), query);
 
 	return {
 		title: file,
@@ -37,31 +34,17 @@ export default async function FileSearch({
 }: {
 	params: { query: string };
 }) {
-	const files = await getFiles();
+	// somehow it needs this specified to work
 	path.join(process.cwd(), "public", "assets");
 	return (
 		<p>
-			{/* <Image
+			<Image
 				alt="image"
-				src={
-					"/assets/" +
-					searchFiles(
-						(await getFiles()).map((file) => file!),
-						params.query
-					)
-				}
+				src={"/assets/" + searchFiles(await getFiles(), params.query)}
 				width="0"
 				height="0"
 				style={{ width: "auto", height: "auto" }}
-			></Image> */}
-			{files.length > 0 ? files.join(", ") : "No files found"}
-			<br />
-			{process.cwd()}
-			<br />
-			{getConfig().serverRuntimeConfig.root}
-			<br />
-			{process.platform}
-			<br />
+			></Image>
 		</p>
 	);
 }
@@ -71,7 +54,9 @@ async function getFiles() {
 		path.join(process.cwd(), "public", "assets") + "/*.{png,jpg,jpeg,gif,svg}"
 	);
 	const fileList = context.map((key) =>
-		process.platform === "win32" ? key.split("\\").pop() : key.split("/").pop()
+		process.platform === "win32"
+			? key.split("\\").pop()!
+			: key.split("/").pop()!
 	);
 
 	return fileList;
