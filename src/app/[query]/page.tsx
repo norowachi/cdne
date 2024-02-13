@@ -48,6 +48,7 @@ export default async function FileSearch({
 			<br />
 			{getConfig().serverRuntimeConfig.root}
 			<br />
+			{process.cwd()}
 		</p>
 	);
 }
@@ -56,8 +57,7 @@ async function getFiles() {
 	"use server";
 
 	const context = await glob(
-		// path.join(getConfig().serverRuntimeConfig.root, "assets") +
-			"./assets/*.{png,jpg,jpeg,gif,svg}"
+		path.join(process.cwd(), "public", "assets") + "/*.{png,jpg,jpeg,gif,svg}"
 	);
 	return context;
 	// const fileList = context.map((key) =>
