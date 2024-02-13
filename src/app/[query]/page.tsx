@@ -35,7 +35,6 @@ export default async function FileSearch({
 }: {
 	params: { query: string };
 }) {
-	const dirs = readdirSync(path.join(getConfig().serverRuntimeConfig.root));
 	return (
 		<>
 			{/* <Image
@@ -45,7 +44,7 @@ export default async function FileSearch({
 				height="0"
 				style={{ width: "auto", height: "auto" }}
 			></Image> */}
-			{dirs.join(", ")}
+			{await getFiles()}
 		</>
 	);
 }
@@ -54,7 +53,7 @@ async function getFiles() {
 	"use server";
 
 	const context = await glob(
-		path.join(getConfig().serverRuntimeConfig.root, "public/assets") +
+		path.join(getConfig().serverRuntimeConfig.root, "assets") +
 			"/*.{png,jpg,jpeg,gif,svg}"
 	);
 	const fileList = context.map((key) =>
