@@ -57,7 +57,7 @@ async function getFiles() {
 
 	const context = await glob(
 		// path.join(getConfig().serverRuntimeConfig.root, "assets") +
-			"././assets/*.{png,jpg,jpeg,gif,svg}"
+			"./././assets/*.{png,jpg,jpeg,gif,svg}"
 	);
 	return context;
 	// const fileList = context.map((key) =>
