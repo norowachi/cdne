@@ -1,10 +1,8 @@
 import Fuse from "fuse.js";
 import Image from "next/image";
-import getConfig from "next/config";
 import type { Metadata, ResolvingMetadata } from "next";
 import { glob } from "glob";
 import path from "path";
-import { get } from "http";
 
 export async function generateMetadata(
 	{ params }: { params: { query: string } },
@@ -22,7 +20,6 @@ export async function generateMetadata(
 			images: `https://cdne.norowa.dev/assets/${file}`,
 		},
 		twitter: {
-			title: file!,
 			card: "summary_large_image",
 			images: `https://cdne.norowa.dev/assets/${file}`,
 		},
