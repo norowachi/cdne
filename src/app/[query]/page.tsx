@@ -48,6 +48,8 @@ export default async function FileSearch({
 			{files.length > 0 ? files.join(", ") : "No files found"}
 			<br />
 			{getConfig().serverRuntimeConfig.root}
+			<br />
+			{readdirSync(getConfig().serverRuntimeConfig.root + "/assets")}
 		</p>
 	);
 }
