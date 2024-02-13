@@ -37,20 +37,13 @@ export default async function FileSearch({
 	const files = await getFiles();
 	return (
 		<p>
-			{/* <Image
+			<Image
 				alt="image"
 				src={"/assets/" + searchFiles(await getFiles(), params.query)}
 				width="0"
 				height="0"
 				style={{ width: "auto", height: "auto" }}
-			></Image> */}
-			{files.length > 0 ? files.join(", ") : "No files found"}
-			<br />
-			{getConfig().serverRuntimeConfig.root}
-			<br />
-			{process.cwd()}
-			<br />
-			{path.join(process.cwd(), "public", "assets")}
+			></Image>
 		</p>
 	);
 }
@@ -61,12 +54,11 @@ async function getFiles() {
 	const context = await glob(
 		path.join(process.cwd(), "public", "assets") + "/*.{png,jpg,jpeg,gif,svg}"
 	);
-	return context;
-	// const fileList = context.map((key) =>
-	// 	key.replace(/public\/assets\/|public\\assets\\/, "")
-	// );
+	const fileList = context.map((key) =>
+		process.platform === "win32" ? key.split("\\").pop() : key.split("/").pop()
+	);
 
-	// return fileList;
+	return fileList;
 }
 
 function searchFiles(images: string[], userInput: string) {
