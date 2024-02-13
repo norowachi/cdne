@@ -36,7 +36,7 @@ export default async function FileSearch({
 	params: { query: string };
 }) {
 	return (
-		<>
+		<p>
 			{/* <Image
 				alt="image"
 				src={"/assets/" + searchFiles(await getFiles(), params.query)}
@@ -45,7 +45,7 @@ export default async function FileSearch({
 				style={{ width: "auto", height: "auto" }}
 			></Image> */}
 			{await getFiles() || "nothin"}
-		</>
+		</p>
 	);
 }
 
