@@ -4,6 +4,7 @@ import getConfig from "next/config";
 import type { Metadata, ResolvingMetadata } from "next";
 import { glob } from "glob";
 import path from "path";
+import { get } from "http";
 
 export async function generateMetadata(
 	{ params }: { params: { query: string } },
@@ -36,9 +37,10 @@ export default async function FileSearch({
 }: {
 	params: { query: string };
 }) {
+	const files = await getFiles();
 	return (
 		<p>
-			<Image
+			{/* <Image
 				alt="image"
 				src={
 					"/assets/" +
@@ -50,7 +52,8 @@ export default async function FileSearch({
 				width="0"
 				height="0"
 				style={{ width: "auto", height: "auto" }}
-			></Image>
+			></Image> */}
+			{files.length > 0 ? files.join(", ") : "No files found"}
 		</p>
 	);
 }
@@ -58,15 +61,16 @@ export default async function FileSearch({
 async function getFiles() {
 	"use server";
 
-	const context = await glob(
+	// const context =
+	return await glob(
 		path.join(process.cwd(), "public", "assets") + "/*.{png,jpg,jpeg,gif,svg}"
 	);
-	const fileList = context.map((key) =>
-		// process.platform === "win32" ? key.split("\\").pop() :
-		key.split("/").pop()
-	);
+	// const fileList = context.map((key) =>
+	// 	// process.platform === "win32" ? key.split("\\").pop() :
+	// 	key.split("/").pop()
+	// );
 
-	return fileList;
+	// return fileList;
 }
 
 function searchFiles(images: string[], userInput: string) {
