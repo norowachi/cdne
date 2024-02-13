@@ -1,5 +1,5 @@
 # What is this?
-This is a little project I made for images linear/fuzzy search
+This is a little project I made for images linear/fuzzy search made by vue and hosted on cloudflare pages
 
 ## Current Goals (By priority)
 1. Way to manage and upload assets
