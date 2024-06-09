@@ -1,13 +1,14 @@
 import Fuse from "fuse.js";
 import Image from "next/image";
-import type { Metadata, ResolvingMetadata } from "next";
+import type { Metadata } from "next";
 import { glob } from "glob";
 import path from "path";
 
-export async function generateMetadata(
-	{ params }: { params: { query: string } },
-	_parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata({
+	params,
+}: {
+	params: { query: string };
+}): Promise<Metadata> {
 	// read route params
 	const query = params.query;
 
